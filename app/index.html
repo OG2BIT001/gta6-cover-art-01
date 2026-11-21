@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover art maker</title>
+<meta name="description" content="Turn your photos and a caption into multi-panel GTA-poster-style cover art and export it as a PNG. Runs fully offline: your photos never leave this machine.">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">NEON COAST <span>cover studio</span></div>
+  <p class="tagline-note">Your photos + a caption → poster-style cover art. Offline, nothing uploaded.</p>
+</header>
+<main class="shell">
+  <section class="stage-wrap">
+    <canvas id="stage" width="1080" height="1080" aria-label="Cover preview"></canvas>
+    <p class="hint">Drag the cover to reframe the selected photo.</p>
+  </section>
+  <aside class="panel">
+    <div class="group">
+      <h2>Photos</h2>
+      <label class="file-label">Add your photos
+        <input id="photo-files" type="file" accept="image/*" multiple>
+      </label>
+      <div id="sample-buttons" class="button-row" aria-label="Sample photos and scenes"></div>
+      <div id="photo-thumbs" class="thumbs" aria-label="Loaded photos"></div>
+      <label class="check"><input id="spread-input" type="checkbox"> Spread photos across panels (one photo fills all panels when off)</label>
+    </div>
+    <div class="group">
+      <h2>Reframe selected photo</h2>
+      <label>Focus across <input id="focus-x" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+      <label>Focus down <input id="focus-y" type="range" min="0" max="1" step="0.01" value="0.45"></label>
+      <label>Zoom <input id="zoom" type="range" min="1" max="2.2" step="0.01" value="1"></label>
+    </div>
+    <div class="group">
+      <h2>Layout</h2>
+      <div id="layout-buttons" class="button-row"></div>
+      <h2>Colour grade</h2>
+      <div id="grade-buttons" class="button-row"></div>
+    </div>
+    <div class="group">
+      <h2>Lettering</h2>
+      <label>Title <input id="title-input" type="text" maxlength="42" value="Neon Coast"></label>
+      <label>Script accent <input id="accent-input" type="text" maxlength="30" value="Vice Nights"></label>
+      <label>Tagline <input id="tagline-input" type="text" maxlength="48" value="Leonida • Est. 2026"></label>
+      <label>Caption <input id="caption-input" type="text" maxlength="60" value="One last ride"></label>
+      <label>Heat (wanted stars) <input id="heat-input" type="range" min="0" max="5" step="1" value="4"></label>
+    </div>
+    <div class="group">
+      <h2>Export size</h2>
+      <div id="size-buttons" class="button-row"></div>
+      <div class="button-row">
+        <button id="export-button" type="button" class="primary">Export PNG</button>
+        <button id="export-all-button" type="button">Export all three sizes</button>
+      </div>
+      <p id="status" role="status"></p>
+    </div>
+  </aside>
+</main>
+<noscript><p class="hint">Neon Coast Cover Studio needs JavaScript: the cover is drawn on a canvas, entirely on your machine.</p></noscript>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
